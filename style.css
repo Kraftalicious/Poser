@@ -1,0 +1,179 @@
+:root {
+  --bg:#0f1115; --panel:#151922; --panel-2:#12151d; --text:#d9dde4; --muted:#9aa4b2;
+  --brand:#7c5cff; --brand-2:#5b45db; --shadow:rgba(0,0,0,.45);
+}
+
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.4 system-ui}
+.titlebar{-webkit-app-region:drag;height:44px;display:flex;align-items:center;padding:0 10px;background:#141823;border-bottom:1px solid #1f2430}
+.traffic{-webkit-app-region:no-drag;display:flex;gap:8px}
+.winbtn{width:12px;height:12px;border-radius:50%;border:none;cursor:pointer}
+.winbtn.close{background:#ff5f56}.winbtn.min{background:#ffbd2e}.winbtn.max{background:#27c93f}
+.title{margin:0 auto;font-weight:600;color:#cfc8ff}
+
+/* Layout */
+.shell{
+  display:grid;
+  grid-template-columns:240px 1fr;     /* sidebar | content */
+  height:calc(100vh - 44px);
+}
+.sidebar{
+  background:var(--panel);
+  border-right:1px solid #1f2430;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.content{
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  overflow:auto;                         /* allow content to scroll */
+}
+
+.profile-rename {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  color: var(--text);
+  background: #1a2030;
+  border: 1px solid #2a3145;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+
+
+
+
+
+
+
+/* Hide scrollbars globally (keep scroll) */
+html, body { overflow:hidden; }
+.content::-webkit-scrollbar { display:none; }
+
+/* Sidebar list */
+.section-title{color:#cfd3db;font-weight:600;margin-bottom:6px}
+.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.item{
+  background:var(--panel-2);
+  padding:10px 12px;
+  border-radius:10px;
+  color:var(--muted);
+  cursor:pointer;
+  user-select:none;
+  transition:background .15s, color .15s, border-color .15s;
+  border:1px solid #1b2130;
+}
+.item:hover{ background:#1a2030; color:#cfd3db; }
+.item.active{ color:var(--text); background:#171c27; border-color:#262d40; }
+
+/* Buttons/inputs */
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  background:#202638;border:1px solid #2b3245;color:var(--text);
+  padding:10px 14px;border-radius:10px;cursor:pointer;
+  transition:transform .02s ease, background .15s, border-color .15s;
+}
+.btn:active{ transform:translateY(1px); }
+.btn.primary{ background:var(--brand); border-color:var(--brand-2); }
+.btn.primary:hover{ background:var(--brand-2); }
+.btn.large{ padding:14px 18px; border-radius:12px; }
+
+.select{
+  width:min(520px,100%);
+  text-align:left;
+  padding:12px 14px;
+  border-radius:10px;
+  background:#1a2030;
+  color:var(--muted);
+  border:1px solid #2a3145;
+}
+
+/* Static “This Computer” */
+#profile-this {
+  font-weight: 600;
+  color: #fff;
+  /* pointer-events: none;  <-- remove this */
+  opacity: .9;
+  border-color: #273047;
+  cursor: pointer;           /* optional: show it’s clickable */
+}
+
+
+/* “+ Add Profile” as a button in the list */
+#add-profile{
+  color:#8aa2ff; font-weight:600; text-align:center; cursor:pointer;
+  border:1px dashed #8aa2ff; border-radius:10px; padding:8px;
+  background:transparent;
+}
+#add-profile:hover{ background:rgba(138,162,255,.12); }
+
+.btn.danger {
+  background: #3a2020;
+  border: 1px solid #5a2b2b;
+  color: #f39b9b;
+}
+
+.btn.danger:hover {
+  background: #5a2b2b;
+  color: #fff;
+}
+
+
+
+.sep {
+  border: none;
+  border-top: 1px solid #1f2430;
+  margin: 16px 0;
+  opacity: 0.8;
+}
+
+.select.small {
+  width: 180px;
+  padding: 10px 12px;
+}
+
+
+
+.countdown {
+  min-width: 76px;
+  text-align: center;
+  padding: 6px 10px;
+  border: 1px solid #2a3145;
+  background: #151a26;
+  border-radius: 8px;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.85;
+  transition: opacity .15s, border-color .15s, background .15s;
+}
+
+.countdown.active {
+  opacity: 1;
+  border-color: #3a4a7a;
+  background: #1b2233;
+}
+/* Only apply to the Enable rotation checkbox */
+#rotateEnable {
+  display: none; /* hide default checkbox */
+}
+
+#rotateEnable + .box {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  border: 2px solid #7c5cff;
+  background: #151922;
+  display: inline-block;
+  transition: background 0.2s, box-shadow 0.2s;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+#rotateEnable:checked + .box {
+  background: #7c5cff;
+  box-shadow: 0 0 0 2px #5b45db inset;
+  margin-right: 6px;
+}

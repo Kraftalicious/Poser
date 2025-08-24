@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:;">
+  <link rel="stylesheet" href="style.css" />
+
+
+  <style>
+    .status { margin-left: 10px; font-size: 12px; opacity: .85; }
+    .status.ok { color:#9BE39B; }
+    .status.warn { color:#E3CF9B; }
+    .status.error { color:#F39B9B; }
+    .status.info { color:#9BB4E3; }
+    .currentMac { opacity:.85; font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+<body>
+  <!-- Custom title bar -->
+  <header class="titlebar">
+    <div class="traffic">
+      <button class="winbtn close" data-action="close" title="Close"></button>
+      <button class="winbtn min"   data-action="min"   title="Minimize"></button>
+      <button class="winbtn max"   data-action="max"   title="Maximize"></button>
+    </div>
+    <div class="title">Poser v2.1.24</div>
+    <div class="actions" style="-webkit-app-region: no-drag;"></div>
+  </header>
+
+  <!-- App body -->
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="section-title">Profiles</div>
+      <ul class="list" id="profile-list">
+        <li class="item active" id="profile-this">This Computer</li>
+        <li class="item" id="add-profile">+ Add Profile</li>
+      </ul>
+    </aside>
+
+    <main class="content">
+      <div class="row" style="align-items:center;">
+
+      </div>
+
+      <div class="group">
+        <div class="group-title">Adapters</div>
+        <select id="adapterSelect" class="select" style="width: 420px;"></select>
+        <div style="margin-top:8px; color:#9aa4b2;">
+          Current MAC: <span id="currentMac" class="currentMac">—</span>
+        </div>
+      </div>
+
+      <div class="group" style="margin-top:20px;">
+        <div class="group-title">Set MAC</div>
+        <div class="row">
+          <input id="macInput" class="select" placeholder="AA:BB:CC:DD:EE:FF" style="width:260px;">
+          <button id="saveProfileBtn" class="btn">Save to Profile</button>
+        </div>
+
+        
+        <div class="row" style="align-items:center; margin-top:20px;">
+        <button id="applyBtn" class="btn primary">Apply New MAC</button>
+        <button id="restoreBtn" class="btn">Restore Factory MAC</button>
+        <button id="randomNowBtn" class="btn">Randomize Now</button>
+        <span id="status" class="status info"></span>
+      </div>
+
+<hr class="sep" style="margin-top:40px;">
+
+<div class="group" style="margin-top:40px; display:flex; flex-direction:column; gap:10px;">
+  <!-- Checkbox on top -->
+
+
+<label class="check">
+  <input type="checkbox" id="rotateEnable">
+  <span class="box"></span>
+  Enable random MAC rotation.
+</label>
+
+  <!-- Interval + countdown + button in a row underneath -->
+  <div class="row" style="align-items:center; gap:40px;" >
+    <select id="rotateInterval" class="select small" title="Rotation interval" style="margin-top: 10px;">
+      <option value="1">every 1 min</option>
+      <option value="5" selected>every 5 min</option>
+      <option value="15">every 15 min</option>
+      <option value="30">every 30 min</option>
+      <option value="60">every 60 min</option>
+    </select>
+    <div id="rotateCountdown" class="countdown" title="Time until next rotation">—</div>
+
+    
+  </div>
+  <label style="font-style: italic;"> *Note: This setting will cause interruptions to your connection. It is not recommended for gaming or media streaming.</label>
+  <label style="font-style: italic;"> Common link for opening captive portals: http://www.msftncsi.com/ncsi.txt</label>
+</div>
+
+
+
+</div>
+<div class="group" style="margin-top:14px;">
+  <button id="deleteProfileBtn" class="btn danger">Delete Profile</button>
+</div>
+
+
+      </div>
+    </main>
+  </div>
+  <script type="module" src="utilities.js"></script>
+  <script type="module" src="renderer.js"></script>
+  <script type="module" src="macrotation.js"></script>
+</body>
+</html>

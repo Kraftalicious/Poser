@@ -1,0 +1,6 @@
+{
+  "watch": ["."],
+  "env": {},
+  "ext": "js,html,css,json",
+  "ignore": ["node_modules", ".git", ".github"]
+}
